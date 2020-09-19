@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/index.css" />
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/heatmap.js"></script>
+    <script src="http://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/treemap.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- <script src="sample.js"></script> -->
+    <style>
+            html,
+            body {
+              height: 100vh;
+              width: 100vw;
+              margin: 0;
+              padding: 0;
+              font-family: sans-serif;
+            }
+
+            .App {
+              display: flex;
+              margin: auto;
+              height: 100%;
+              width:1600px;
+              margin-bottom: 30px;
+            }
+
+            .profileDetails {
+              flex: 0.3;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            }
+
+            .pic-section {
+              display: flex;
+              flex-direction: column;
+              background-color: #3893d0;
+              height: 370px;
+              width: 100%;
+              align-items: center;
+            }
+
+            .profile-image {
+              height: 200px;
+              display: block;
+              margin-top: 30px;
+            }
+
+            .profile-keys {
+              display: block;
+              margin: auto;
+              color: #fff;
+              margin: 0 auto;
+            }
+
+            .name {
+              font-size: 35px;
+              text-transform: capitalize;
+              margin: 10px 0 20px 0;
+            }
+
+            .role,
+            .company {
+              font-size: 20px;
+            }
+
+            .company {
+              margin-bottom: 30px;
+            }
+
+            .professional-details {
+              flex: 0.8;
+              width: 100%;
+              padding: 10px;
+              box-sizing: border-box;
+            }
+
+            .row-detail {
+              display: flex;
+              justify-content: space-between;
+              border-bottom: 1px solid #dadada;
+            }
+
+            .detail-key {
+              color: #3893d0;
+            }
+
+            .detail-value {
+              text-transform: capitalize;
+              max-width: 200px;
+            }
+
+            .linkedin-container {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-top: 50px;
+            }
+
+            .report-section {
+              flex: 0.8;
+              padding: 20px;
+              box-sizing: border-box;
+            }
+
+            .linkedin-link {
+              color: #fff;
+              background-color: #3893d0;
+              padding: 15px 50px;
+              text-decoration: none;
+              font-size: 21px;
+              border-radius: 5px;
+            }
+
+            .pathway-content {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              padding: 40px 0 0 10px;
+            }
+
+            .company-title {
+              font-size: 35px;
+              color: #3893d0;
+              padding: 10px 20px;
+            }
+
+            .infographs-section {
+              display: flex;
+              align-items: flex-start;
+              padding: 30px 5px;
+            }
+
+            .skill-meter,
+            .skill-graphs {
+              flex: 1;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-direction: column;
+            }
+
+            .graph-title,
+            .section-heading {
+              color: #404040;
+              margin-left: 20px;
+              font-size: 17px;
+            }
+
+            .pathway-detail {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              min-height: 100px;
+              border-right: 1px solid #dadada;
+            }
+
+            .svgPath {
+              fill: #3893d0;
+            }
+
+            .skill-expander{
+              width: 200px;
+              background-color: #D8D8D8;
+              height: 25px;
+              margin-left: 10px;
+            }
+
+            .skill-name-wrapper{
+              display:flex;
+              align-items: center;
+              justify-content: center;
+            }
+
+            .skillOne-filler{
+              height: 25px;
+              background-color:#3893d0;
+              width: {{skillOnePercentage}}%;
+            }
+
+            .skillTwo-filler{
+              height: 25px;
+              background-color:#3893d0;
+              width: {{skillTwoPercentage}}%;
+            }
+
+            .skillThree-filler{
+              height: 25px;
+              background-color:#3893d0;
+              width: {{skillThreePercentage}}%;
+            }
+
+            .section-heading-diving{
+              display: flex;
+              align-items: center;
+            }
+
+            .divider-line{
+              flex: 1;
+              height: 1px;
+              background: #dadada;
+              margin-left: 10px;
+            }
+
+            .about-content{
+              padding: 25px 20px 70px 20px;
+              color:#585858;
+            }
+
+            .skillMeter{
+              width: 300px;
+              height: 40px;
+            }
+
+            .pathway-key{
+              margin:0 0 20px 0;
+            }
+
+            .pathway-content:last-child{
+              border-right: none;
+            }
+
+            .highcharts-container {
+              height: 210px !important;
+            }
+
+            .indicators-container{
+              display:flex;
+              color: #585858;
+              margin: 20px 0 0 10px;;
+            }
+
+            .color-type{
+              display:flex;
+              margin-right:10px;
+            }
+
+            .color-filler-started{
+              height:20px;
+              width:20px;
+              background: #EEF4EC;
+              margin-right: 10px;
+            }
+
+            .color-filler-almost{
+              height:20px;
+              width:20px;
+              background: #B7D3AF;
+              margin-right: 10px;
+            }
+
+            .color-filler-ready{
+              height:20px;
+              width:20px;
+              background: #5C9440;
+              margin-right: 10px;
+            }
+
+            .cred-logo{
+              width:75px;
+            }
+
+            .title-section{
+              border-bottom: 1px solid #dadada;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            }
+
+            .cred-logo-conatiner{
+              display:flex;
+              align-items: center;
+              font-size: 20px;
+              text-transform: capitalize;
+              color: grey;
+            }
+
+            #treeContainer{
+              height: 500px;
+              width: 500px;
+            }
+
+            #gaugeMeter{
+              max-height: 300px;
+            }
+
+          .highcharts-container{
+            width: 500px;
+            height: 500px !important;
+          }
+
+          .highcharts-legend{
+            display: none;
+          }
+
+
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var credReadniess = "{{readinessValue}}";
+        // treeDataVariable = JSON.parse(treeDataVariable)
+        // document.getElementById('targetValue').innerText = 'hdsvuhsdvkhdvsdubiubsdifdsu   ' +treeDataVariable
+        // el.innerText(typeof treeMapData)
+        // treeMapData.
+        var chartColors = ["#828282"];
+        var gaugePBColors = ["#EEF4EC", "#B7D3AF", "#5C9440"];
+
+        var chart = new Highcharts.Chart(
+          {
+            chart: {
+              renderTo: "gaugeMeter",
+              type: "gauge",
+              backgroundColor: "none",
+            },
+
+            colors: [chartColors[0]],
+
+            credits: {
+              enabled: false,
+            },
+
+            title: {
+              text: null,
+              style: {
+                fontFamily: "arial,helvetica,sans-serif",
+                color: chartColors[1],
+                fontWeight: "bold",
+                fontSize: "24px",
+              },
+            },
+
+            legend: {
+              align: "left",
+              verticalAlign: "bottom",
+              layout: "vertical",
+              x: 0,
+              y: -112,
+              floating: true,
+              borderWidth: 0,
+            },      
+            exporting: { enabled: false },
+
+            pane: [
+              {
+                startAngle: -90,
+                endAngle: 90,
+                background: null,
+              },
+            ],
+
+            yAxis: [
+              {
+                min: 1,
+                max: 100,
+                lineColor: "transparent",
+                tickWidth: 1,
+                tickLength: 12,
+                tickColor: "transparent" /*'#ffffff',*/,
+                minorTickColor: "transparent",
+                labels: {
+                  rotation: null,
+                  distance: 15,
+                  zIndex: 1,
+                },
+                plotBands: [
+                  {
+                    from: 1,
+                    to: 30,
+                    color: gaugePBColors[0],
+                    innerRadius: "75%",
+                    outerRadius: "100%",
+                  },
+                  {
+                    from: 30,
+                    to: 70,
+                    color: gaugePBColors[1],
+                    innerRadius: "75%",
+                    outerRadius: "100%",
+                  },
+                  {
+                    from: 70,
+                    to: 100,
+                    color: gaugePBColors[2],
+                    innerRadius: "75%",
+                    outerRadius: "100%",
+                  },
+                ],
+                pane: 0,
+              },
+            ],
+
+            plotOptions: {
+              gauge: {
+                dial: {
+                  radius: "100%",
+                  baseWidth: 7,
+                  baseLength: 14,
+                  rearLength: 0,
+                },
+                pivot: {
+                  radius: 3,
+                  backgroundColor: chartColors[1],
+                },
+                // showInLegend: true
+              },
+            },
+
+            series: [
+              {
+                name: "CREDREADNIESS",
+                data: [Number(credReadniess)],
+                animation: false,
+                dial: {
+                  backgroundColor: chartColors[0],
+                },
+                yAxis: 0,
+              },
+            ],
+          }
+        );
+
+    //    var treeChart = new Highcharts.chart('treeContainer', {
+
+    //     colorAxis: {
+    //         minColor: '#FFFFFF',
+    //         maxColor: Highcharts.getOptions().colors[0]
+    //     },
+    //     chart: {
+    //     renderTo: 'chart',
+    //     margin: 0,
+    //     defaultSeriesType: 'areaspline'
+    //     },
+    //     exporting: { 
+    //         enabled: false 
+    //     },
+    //     credits: {
+    //         enabled: false,
+    //     },
+    //     title:{
+    //         text: null
+    //     },
+    //     series: [{
+    //         animation: false,
+    //         type: "treemap",
+    //         layoutAlgorithm: 'stripes',
+    //         alternateStartingDirection: true,
+    //         levels: [{
+    //             level: 1,
+    //             layoutAlgorithm: 'sliceAndDice',
+    //             dataLabels: {
+    //                 enabled: true,
+    //                 align: 'left',
+    //                 verticalAlign: 'top',
+    //                 style: {
+    //                     fontSize: '15px',
+    //                     fontWeight: 'bold'
+    //                 }
+    //         }
+    //     }],
+    //         data: [{name:'sample', value:1}]
+    //     }],
+    // });
+});
+    </script>
+  </head>
+  <body>
+    <div class="App">
+      <div class="profileDetails">
+        <div class="pic-section">
+          <img src={{{json profilePic}}} class="profile-image" />
+          <!-- <div class="details"> -->
+          <p class="name profile-keys">{{name}}</p>
+          <p class="role profile-keys">{{currentRole}},</p>
+          <p class="company profile-keys">{{companyName}}</p>
+          <!-- </div> -->
+        </div>
+        <div class="professional-details">
+          <div class="row-detail">
+            <p class="detail-key">Highest Degree:</p>
+            <p class="detail-value">{{highestDegree}}</p>
+          </div>
+          <div class="row-detail">
+            <p class="detail-key">Gender:</p>
+            <p class="detail-value">{{gender}}</p>
+          </div>
+          <div class="row-detail">
+            <p class="detail-key">Race & Ethnicity:</p>
+            <p class="detail-value">{{ethnicity}}</p>
+          </div>
+          <!-- <div class="row-detail">
+            <p class="detail-key">Phone:</p>
+            <p class="detail-value">{{phone}}</p>
+          </div>
+          <div class="row-detail">
+            <p class="detail-key">Email:</p>
+            <p class="detail-value">{{email}}</p>
+          </div> -->
+
+          <div class="linkedin-container">
+            <a class="linkedin-link" href="{{linkedIn}}">
+              View Linkedin Profile
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="report-section">
+        <div class="title-section">
+          <div class="company-title">Candidate Report</div>
+          <div class="cred-logo-conatiner">
+            <div class="-powered-company">Powered by</div>
+            <img class="cred-logo" src="http://shark-frontend.s3-website.ap-south-1.amazonaws.com/static/media/CredReady_logo_final.png" />
+          </div>
+        </div>
+        <div class="infographs-section">
+          <div class="skill-meter">
+            <p class="graph-title">CREDREADINESS</p>
+            <div id="gaugeMeter"></div>
+            <div class="readinessValue">{{credredinessValue}}</div>
+            <div class="indicators-container">
+              <div class="color-type">
+                <div class="color-filler-started"></div>
+                <div class="color-key">Get Started</div>
+              </div>
+              <div class="color-type">
+                <div class="color-filler-almost"></div>
+                <div class="color-key">Almost Ready</div>
+              </div>
+              <div class="color-type">
+                <div class="color-filler-ready"></div>
+                <div class="color-key">Ready</div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-graphs">
+            <p class="graph-title">CREADREADY MATCHED EXPERIENCES</p>
+            <div id="treeContainer">
+              <!-- <div class="skill-name-wrapper">
+                <p>Skill 1</p>
+                <div class="skill-expander">
+                  <div class="skillOne-filler" ></div>
+                </div>
+              </div>  
+            <div class="skill-name-wrapper">
+              <p>Skill 2</p>
+              <div class="skill-expander">
+                <div class="skillTwo-filler"></div>
+                </div>
+            </div>
+            <div class="skill-name-wrapper">
+              <p>Skill 3</p>
+              <div class="skill-expander">
+                <div class="skillThree-filler" style=></div>
+              </div>
+            </div> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="about-section">
+          <div class="section-heading-diving">
+            <div class="section-heading">ABOUT</div>
+            <div class="divider-line"></div>
+          </div>
+          <div class="about-content">{{about}}</div>
+        </div>
+
+        <!-- <div class="pathway-section">
+          <div class="section-heading-diving">
+            <div class="section-heading">CREDREADY PATHWAY</div>
+            <div class="divider-line"></div>
+          </div>
+          <div class="pathway-content">
+            <div class="pathway-detail">
+              <p class="pathway-key">MD</p>
+              {% if data['bio'] %}
+              <svg
+                width="24"
+                height="24"
+                xmlns="http://www.w3.org/2000/svg"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              >
+                <path
+                  class="svgPath"
+                  d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm7 7.457l-9.005 9.565-4.995-5.865.761-.649 4.271 5.016 8.24-8.752.728.685z"
+                />
+              </svg>
+              {% else %}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="#404040"
+              >
+                <path
+                  d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-12v-2h12v2z"
+                />
+              </svg>
+              {% endif %}
+            </div>
+
+            <div class="pathway-detail">
+              <p class="pathway-key">PHD</p>
+              {% if data['phd'] %}
+              <svg
+                width="24"
+                height="24"
+                xmlns="http://www.w3.org/2000/svg"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                fill="#3893d0"
+              >
+                <path
+                  d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm7 7.457l-9.005 9.565-4.995-5.865.761-.649 4.271 5.016 8.24-8.752.728.685z"
+                />
+              </svg>
+              {% else %}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="#404040"
+              >
+                <path
+                  d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-12v-2h12v2z"
+                />
+              </svg>
+              {% endif %}
+            </div>
+            <div class="pathway-detail">
+              <p class="pathway-key">Post Doc</p>
+              {% if data['rAndD'] %}
+              <svg
+                width="24"
+                height="24"
+                xmlns="http://www.w3.org/2000/svg"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                fill="#3893d0"
+              >
+                <path
+                  d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm7 7.457l-9.005 9.565-4.995-5.865.761-.649 4.271 5.016 8.24-8.752.728.685z"
+                />
+              </svg>
+              {% else %}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="#404040"
+              >
+                <path
+                  d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-12v-2h12v2z"
+                />
+              </svg>
+              {% endif %}
+            </div>
+            <div class="pathway-detail">
+              <p class="pathway-key">MBA</p>
+              {% if data['mba'] %}
+              <svg
+                width="24"
+                height="24"
+                xmlns="http://www.w3.org/2000/svg"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                fill="#3893d0"
+              >
+                <path
+                  d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm7 7.457l-9.005 9.565-4.995-5.865.761-.649 4.271 5.016 8.24-8.752.728.685z"
+                />
+              </svg>
+              {% else %}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="#404040"
+              >
+                <path
+                  d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-12v-2h12v2z"
+                />
+              </svg>
+              {% endif %}
+            </div>
+            <div class="pathway-detail">
+              <p class="pathway-key">Principle</p>
+              {% if data['mAndA'] %}
+              <svg
+                width="24"
+                height="24"
+                xmlns="http://www.w3.org/2000/svg"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                fill="#3893d0"
+              >
+                <path
+                  d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm7 7.457l-9.005 9.565-4.995-5.865.761-.649 4.271 5.016 8.24-8.752.728.685z"
+                />
+              </svg>
+              {% else %}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="#404040"
+              >
+                <path
+                  d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-12v-2h12v2z"
+                />
+              </svg>
+              {% endif %}
+            </div>
+            <div class="pathway-detail">
+              <p class="pathway-key">Board Observer</p>
+              {% if data['ventureCapital'] %}
+              <svg
+                width="24"
+                height="24"
+                xmlns="http://www.w3.org/2000/svg"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                fill="#3893d0"
+              >
+                <path
+                  d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm7 7.457l-9.005 9.565-4.995-5.865.761-.649 4.271 5.016 8.24-8.752.728.685z"
+                />
+              </svg>
+              {% else %}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="#404040"
+              >
+                <path
+                  d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-12v-2h12v2z"
+                />
+              </svg>
+              {% endif %}
+            </div>
+          </div> -->
+          <div id="targetValue"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
