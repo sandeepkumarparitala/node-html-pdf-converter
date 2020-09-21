@@ -17,7 +17,7 @@ hbs.registerHelper("json", function (content) {
   return JSON.stringify(content);
 });
 
-var Base64 = {
+const Base64 = {
   // private property
   _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
 
@@ -143,23 +143,21 @@ var Base64 = {
   },
 };
 
-const iife = async function () {
+const iife = async function (profileData) {
   try {
     const browser = await puppeteer.launch({
       args: ["--window-size=1920,1080"],
     });
     const page = await browser.newPage();
-    const encodedString = Base64.encode(JSON.stringify(data.treeData));
-    data.treeData = encodedString;
-    console.log("jsonData ===> *******", data);
-    const content = await compile("resume-template.html", data);
+    const encodedString = Base64.encode(JSON.stringify(profileData.treeData));
+    profileData.treeData = encodedString;
+    const content = await compile("resume-template.html", profileData);
 
     console.log("reversedecoded ", Base64.decode(encodedString));
     await page.setContent(content);
     await page.emulateMediaFeatures("screen");
     await page.pdf({
-      path: "mypdf.pdf",
-      //   format: "A4",
+      path: profileData.name + ".pdf",
       landscape: true,
       printBackground: true,
     });
@@ -172,9 +170,4 @@ const iife = async function () {
   }
 };
 
-iife();
-
-// var http = require("http").createServer(app);
-
-// http.listen(config.PORT);
-// console.log("App running at http://" + config.HOST + ":" + config.PORT + "/");
+data.map((profile) => iife(profile));

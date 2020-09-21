@@ -1,99 +1,200 @@
-{
-  "name": "Steve Jobs",
-  "profilePic": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1511288482l/11084145._SY475_.jpg",
-  "currentRole": "VP-operations",
-  "companyName": "Johnson & Jhonson",
-  "highestDegree": "MBA, Columbia Bussiness School",
-  "gender": "male",
-  "ethnicity": "non-hispanic white",
-  "phone": "9080-90-90099",
-  "skillOnePercentage": "80",
-  "skillTwoPercentage": "30",
-  "skillThreePercentage": "90",
-  "bio": true,
-  "phd": false,
-  "rAndD": true,
-  "mba": true,
-  "mAndA": false,
-  "ventureCapital": true,
-  "email": "abcd@abc.com",
-  "readinessValue": 40,
-  "treeData": [
-    {
-      "id": "A",
-      "name": "Mani-Dade",
-      "colorValue": 1
-    },
-    {
-      "id": "B",
-      "name": "Broward",
-      "colorValue": 5
-    },
-    {
-      "id": "O",
-      "name": "Palm Beach",
-      "colorValue": 7
-    },
-    {
-      "name": "Orange",
-      "parent": "A",
-      "value": 5,
-      "colorValue": 6
-    },
-    {
-      "name": "Rick",
-      "parent": "A",
-      "value": 3,
-      "colorValue": 4
-    },
-    {
-      "name": "Peter",
-      "parent": "A",
-      "value": 4,
-      "colorValue": 9
-    },
-    {
-      "name": "Anne",
-      "parent": "B",
-      "value": 4,
-      "colorValue": 5
-    },
-    {
-      "name": "Rick",
-      "parent": "B",
-      "value": 10,
-      "colorValue": 9
-    },
-    {
-      "name": "Peter",
-      "parent": "B",
-      "value": 1,
-      "colorValue": 3
-    },
-    {
-      "name": "Anne",
-      "parent": "O",
-      "value": 1,
-      "colorValue": 4
-    },
-    {
-      "name": "Rick",
-      "parent": "O",
-      "value": 3,
-      "colorValue": 3
-    },
-    {
-      "name": "Peter",
-      "parent": "O",
-      "value": 3,
-      "colorValue": 8
-    },
-    {
-      "name": "Susanne",
-      "parent": "Kiwi",
-      "value": 2,
-      "colorValue": 5
-    }
-  ],
-  "about": "18+ years of experience in business development and Mergers and Acquisitions, completing over $70 billion in high value growth-oriented transactions, in fields ranging from medical devices and pharmaceuticals to semiconductors and software. In his most recent role as VP, Business Development, he added many platforms and technologies to Ethicon's portfolio, including those in digital surgery (3Di, Auris investment and collaboration), GERD (Torax), Interventional Oncology (NeuWave, Auris collaboration), Wound Closure (barbed sutures) and Energy (Megadyne)"
-}
+[
+  {
+    "name": "Steve Jobs",
+    "profilePic": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1511288482l/11084145._SY475_.jpg",
+    "currentRole": "VP-operations",
+    "companyName": "Johnson & Jhonson",
+    "highestDegree": "MBA, Columbia Bussiness School",
+    "gender": "male",
+    "ethnicity": "non-hispanic white",
+    "phone": "9080-90-90099",
+    "skillOnePercentage": "80",
+    "skillTwoPercentage": "30",
+    "skillThreePercentage": "90",
+    "bio": true,
+    "phd": false,
+    "rAndD": true,
+    "mba": true,
+    "mAndA": false,
+    "ventureCapital": true,
+    "email": "abcd@abc.com",
+    "readinessValue": 40,
+    "treeData": [
+      {
+        "id": "A",
+        "name": "Mani-Dade",
+        "colorValue": 1
+      },
+      {
+        "id": "B",
+        "name": "Broward",
+        "colorValue": 5
+      },
+      {
+        "id": "O",
+        "name": "Palm Beach",
+        "colorValue": 7
+      },
+      {
+        "name": "Orange",
+        "parent": "A",
+        "value": 5,
+        "colorValue": 6
+      },
+      {
+        "name": "Rick",
+        "parent": "A",
+        "value": 3,
+        "colorValue": 4
+      },
+      {
+        "name": "Peter",
+        "parent": "A",
+        "value": 4,
+        "colorValue": 9
+      },
+      {
+        "name": "Anne",
+        "parent": "B",
+        "value": 4,
+        "colorValue": 5
+      },
+      {
+        "name": "Rick",
+        "parent": "B",
+        "value": 10,
+        "colorValue": 9
+      },
+      {
+        "name": "Peter",
+        "parent": "B",
+        "value": 1,
+        "colorValue": 3
+      },
+      {
+        "name": "Anne",
+        "parent": "O",
+        "value": 1,
+        "colorValue": 4
+      },
+      {
+        "name": "Rick",
+        "parent": "O",
+        "value": 3,
+        "colorValue": 3
+      },
+      {
+        "name": "Peter",
+        "parent": "O",
+        "value": 3,
+        "colorValue": 8
+      },
+      {
+        "name": "Susanne",
+        "parent": "Kiwi",
+        "value": 2,
+        "colorValue": 5
+      }
+    ],
+    "about": "18+ years of experience in business development and Mergers and Acquisitions, completing over $70 billion in high value growth-oriented transactions, in fields ranging from medical devices and pharmaceuticals to semiconductors and software. In his most recent role as VP, Business Development, he added many platforms and technologies to Ethicon's portfolio, including those in digital surgery (3Di, Auris investment and collaboration), GERD (Torax), Interventional Oncology (NeuWave, Auris collaboration), Wound Closure (barbed sutures) and Energy (Megadyne)"
+  },
+  {
+    "name": "Elon Musk",
+    "profilePic": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Elon_Musk_Royal_Society.jpg/220px-Elon_Musk_Royal_Society.jpg",
+    "currentRole": "VP-operations",
+    "companyName": "Johnson & Jhonson",
+    "highestDegree": "MBA, Columbia Bussiness School",
+    "gender": "male",
+    "ethnicity": "non-hispanic white",
+    "phone": "9080-90-90099",
+    "skillOnePercentage": "80",
+    "skillTwoPercentage": "30",
+    "skillThreePercentage": "90",
+    "bio": true,
+    "phd": false,
+    "rAndD": true,
+    "mba": true,
+    "mAndA": false,
+    "ventureCapital": true,
+    "email": "abcd@abc.com",
+    "readinessValue": 40,
+    "treeData": [
+      {
+        "id": "A",
+        "name": "Mani-Dade",
+        "colorValue": 1
+      },
+      {
+        "id": "B",
+        "name": "Broward",
+        "colorValue": 5
+      },
+      {
+        "id": "O",
+        "name": "Palm Beach",
+        "colorValue": 7
+      },
+      {
+        "name": "Orange",
+        "parent": "A",
+        "value": 5,
+        "colorValue": 6
+      },
+      {
+        "name": "Rick",
+        "parent": "A",
+        "value": 3,
+        "colorValue": 4
+      },
+      {
+        "name": "Peter",
+        "parent": "A",
+        "value": 4,
+        "colorValue": 9
+      },
+      {
+        "name": "Anne",
+        "parent": "B",
+        "value": 4,
+        "colorValue": 5
+      },
+      {
+        "name": "Rick",
+        "parent": "B",
+        "value": 10,
+        "colorValue": 9
+      },
+      {
+        "name": "Peter",
+        "parent": "B",
+        "value": 1,
+        "colorValue": 3
+      },
+      {
+        "name": "Anne",
+        "parent": "O",
+        "value": 1,
+        "colorValue": 4
+      },
+      {
+        "name": "Rick",
+        "parent": "O",
+        "value": 3,
+        "colorValue": 3
+      },
+      {
+        "name": "Peter",
+        "parent": "O",
+        "value": 3,
+        "colorValue": 8
+      },
+      {
+        "name": "Susanne",
+        "parent": "Kiwi",
+        "value": 2,
+        "colorValue": 5
+      }
+    ],
+    "about": "18+ years of experience in business development and Mergers and Acquisitions, completing over $70 billion in high value growth-oriented transactions, in fields ranging from medical devices and pharmaceuticals to semiconductors and software. In his most recent role as VP, Business Development, he added many platforms and technologies to Ethicon's portfolio, including those in digital surgery (3Di, Auris investment and collaboration), GERD (Torax), Interventional Oncology (NeuWave, Auris collaboration), Wound Closure (barbed sutures) and Energy (Megadyne)"
+  }
+]
